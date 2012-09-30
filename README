@@ -1,0 +1,16 @@
+This is a simple python script used to calculate the RMSD of two molecules.
+
+In my work of molecular docking, one common task needed to be done is to calculate the RMSD (Root-mean-square deviation) of two molecules. For example, if I have the structure of a molecule shown in crystal (check Protein Data Bank), and I obtained the other one by performing molecular docking, then I may want to know how well the docking program performs by calculating the RMSD of the two molecules.
+
+RMSD calculation of two molecules requires the coordinates of each atoms in the two molecules. One problem here is that the correspondence of the atoms in the two molecules may missing. In some cases the two molecules do not have same identifications for each atom in the first place, some molecular docking programs may also change the identifications during simulation.
+
+This script uses the atom type of each atom, along with the atom type of its direct and first-indirect-linking atoms as the identification of each atom in the two molecules, and calculate the RMSD between the two molecules. When multiple coorespondences are available, all possibilities are considered and the one with least RMSD is taken.
+
+The usage of thsi script is simple and direct by launching the script with two molecules as arguments:
+python pyrmsd.py sample1.mol sample2.mol
+(with the test case included along with the script, the RMSD between the native.mol and test.mol can be calculated with
+pytyon pyrmsd.py native.mol test.mol
+)
+
+For now, only the mol file type is supported. Commonly used other file types for molecular information may be easily translated to mol by Python or OpenBabel.
+It is planned to make this script as a Pymol plugin in near future.
